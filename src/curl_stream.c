@@ -154,7 +154,7 @@ static int curls_certificate(git_cert **out, git_stream *stream)
 	git_vector strings = GIT_VECTOR_INIT;
 	curl_stream *s = (curl_stream *) stream;
 
-	if ((res = curl_easy_getinfo(s->handle, CURLINFO_CERTINFO, &certinfo)) != CURLE_OK)
+	if ((res = curl_easy_getinfo(s->handle, CURLINFO_CERTINFO, (struct curl_slist **)&certinfo)) != CURLE_OK)
 		return seterr_curl(s);
 
 	/* No information is available, can happen with SecureTransport */
