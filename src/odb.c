@@ -1267,7 +1267,7 @@ static int git_odb_stream__invalid_length(
 		"Cannot %s - "
 		"Invalid length. %"PRIuZ" was expected. The "
 		"total size of the received chunks amounts to %"PRIuZ".",
-		action, stream->declared_size, stream->received_bytes);		
+                   action, (size_t)stream->declared_size, (size_t)stream->received_bytes);		
 
 	return -1;
 }
